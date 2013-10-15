@@ -1,0 +1,40 @@
+﻿body {
+    background-color:#46C7C7;
+}
+#navbar {
+    position: relative;
+	top: 10px;
+	background-color: #3c4543;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+    
+    
+}
+ul{
+	list-style-type: none;
+	margin: 400px;
+    position: fixed;
+
+
+}
+li {
+    display: inline;
+	border: 1px solid #000000;
+	font-family: Futura, Tahoma, sans-serif;
+	color: black;
+	padding: 1px;
+	border-radius: 2px 2px;
+	background-color: gray;
+    margin: auto;
+    text-align: center;
+
+
+}
+img {
+   margin:auto;
+   /*display:block;*/
+   border: 5px solid black;
+   border-radius:5px;
+   position:fixed;
+   margin-left:35%;  
+}
