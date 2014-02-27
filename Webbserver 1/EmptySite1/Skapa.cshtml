@@ -1,0 +1,38 @@
+﻿@{
+    var InläggNamn="";
+    var InläggTitle="";
+    var InläggKategori="";
+    var InläggPlats="";
+    var InläggText="";
+
+    if(IsPost){
+       InläggNamn=Request["formNamn"];
+       InläggTitle=Request["formTitle"];
+       InläggKategori=Request["formKategori"];
+       InläggPlats=Request["formPlats"];
+       InläggText=Request["formText"];
+
+       var SQLINSERT = "INSERT INTO posts (Namn, Title, Kategori, Plats, Text) VALUES (@0, @1, @2, @3, @4)";
+       var db = Database.Open("Inlägg");
+       db.Execute(SQLINSERT, InläggNamn, InläggTitle, InläggKategori, InläggPlats, InläggText);
+       Response.Redirect("Default.cshtml");
+   }
+
+}
+
+<h1>Skapa nytt inlägg.</h1>
+<form action="" method="post">
+    <p>Användare:<br/><input type="text" name="formNamn"/></p>
+    <p>Title<br/><input type="text" name="formTitle"/></p>
+    <p>Kategori:<br/><select name="forKategori">
+            <option value="A">Billjud</option>
+            <option value="B">Elektronik</option>
+            <option value="C">Motor och tuning</option>
+            <option value="D">Styling</option>
+            <option value="E">Skötsel</option>
+            <option value="F">Tips & Råd</option>
+        </select></p>
+    <p>Plats:<br/><input type="text" name="formPlats"/></p>
+    <p>Text:<br/><input type="text" name="formText"/></p>
+    <p><input type="submit" value="Skapa Inlägg"/></p>
+</form>
