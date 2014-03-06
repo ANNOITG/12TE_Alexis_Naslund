@@ -3,14 +3,24 @@
     var sqlQ = "SELECT * FROM  posts";
     var data = db.Query(sqlQ);
 }
-<div id="TidigareInlägg">
-    <ol>
-        @foreach(var row in data)
-        {
-            <li><a href="*">@row.Namn,@row.Title,@row.Kategori @row.Plats, @row.Text
-            </a></li>
-        }
-    </ol>
+<link rel="stylesheet" type="text/css" href="Forum_Inlägg.css">
+
+<div id="Rubrik_Inlägg">
+    <h2>Tidigare Inlägg</h2>
+</div>
+
+    <div id="List_inlägg">
+        <ol>
+            @foreach(var row in data)
+            {
+                <li>
+                <a href="ÄndraInlägg.cshtml?id=@row.ID">@row.Namn | @row.Title | @row.Kategori | @row.Plats | @row.Text</a>
+                <a href="RaderaInlägg.cshtml?id=@row.ID">Radera</a>
+                </li>
+            }
+        </ol>
+    </div>
+
     <a href="Skapa.cshtml">Skapa nytt inlägg.</a>
 </div>
 

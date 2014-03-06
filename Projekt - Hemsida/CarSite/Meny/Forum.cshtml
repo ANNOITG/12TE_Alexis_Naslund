@@ -1,0 +1,27 @@
+﻿<link rel="stylesheet" type="text/css" href="~/Meny-CSS/StyleSheet_Forum.css"/>
+@{
+    var db = Database.Open("Inlägg");
+    var sqlQ = "SELECT * FROM  posts";
+    var data = db.Query(sqlQ);
+}
+<link rel="stylesheet" type="text/css" href="Forum_Inlägg.css">
+
+<a class="Knapp" href="~/Inlägg.cshtml">SKAPA INLÄGG.</a>
+<div class="Rubrik_Inlägg">
+    <h2>TIDIGARE INLÄGG</h2>
+
+
+    <div id="List_inlägg">
+        
+        <ol>
+            @foreach(var row in data)
+            {
+                <li class="list_li">
+                <p class="Inlägg_Info">@row.Namn | @row.Title | @row.Kategori | @row.Plats </p>
+                <a class="Knapp_1" href="~/RaderaInlägg.cshtml?id=@row.ID">RADERA</a>
+                <a class="Knapp_2" href="~/ÄndraInlägg.cshtml?id=@row.ID">ÄNDRA</a>
+                </li>
+            }
+        </ol>
+    </div>
+    </div>
