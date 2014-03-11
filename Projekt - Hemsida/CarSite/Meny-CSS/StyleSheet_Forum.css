@@ -1,0 +1,92 @@
+body {
+}
+.Rubrik_Inlägg {
+    font-size: 20px;
+    font-family: 'Candal', sans-serif; font-weight: 900;
+    color: #fff;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 60%;
+    position: relative;
+    margin: 0 auto;
+    top: 10px;
+    height: 750px;
+    background-color:rgb(49, 87, 122);
+    
+}
+a {
+    text-decoration: none;
+    text-align: center;
+   
+}
+.Inlägg_Info {
+    color: black;
+    display: inline;
+}
+.list_li {
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 60%;
+    font-size: 15px;
+    font-family: 'Candal', sans-serif; font-weight: 300;
+    color: #fff;
+    position: relative;
+    margin: 0 auto;
+    list-style: none;
+    background-color: #fff;
+    height: 60px;
+    
+}
+.Knapp {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align:center;
+    text-decoration: none;
+    padding: 2px;
+    right:-100px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.Knapp_1 {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 2px;
+    top: -5px;
+    position: relative;
+    float: right;
+    right: -90px;
+}
+.Knapp_2 {
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 2px;
+    position: relative;
+    top: -5px;
+    float: right;
+    clear: right;
+    right: -90px;
+}
+
+#List_inlägg ol
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.Input {
+
+    font-family: 'Candal', sans-serif; font-weight: 900;
+    color: #FFF;
+    position: relative;
+    left: 10px;
+}

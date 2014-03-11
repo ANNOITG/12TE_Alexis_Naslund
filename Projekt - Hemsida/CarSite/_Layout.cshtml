@@ -1,0 +1,41 @@
+﻿@{
+    
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Meny-CSS/StyleSheet.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:900|Candal|Open+Sans' rel='stylesheet' type='text/css'>
+    <title></title>
+
+    <!-- jQuery library (served from Google) -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="../jb/jquery.bxslider.min.js"></script>
+    <!-- bxSlider CSS file -->
+    <link href="../jb/jquery.bxslider.css" rel="stylesheet" />
+    <script src="../Script.js" type="text/javascript"></script>
+</head>
+    <body>
+        <div class="PageWrapper">
+            
+            
+            <div class="container">
+                <ul class="menu">
+                    <li><a href="~/Meny/Default.cshtml">START</a></li>
+                    <li><a href="~/Meny/Bilar.cshtml">BILAR</a></li>
+                    <li><a href="~/Meny/Fotoalbum.cshtml">FOTOALBUM</a></li>
+                    <li><a href="~/Meny/Projekt.cshtml">PROJEKT</a></li>
+                    <li><a href="~/Meny/Evenemang.cshtml">EVENEMANG</a></li>
+                    <li><a href="~/Meny/Forum.cshtml">FORUM</a></li>
+                </ul>
+               </div>
+        
+        <div class="ContentWrapper">
+            @RenderBody()
+        </div>
+
+    </div>                                <!--END OF PAGEWRAPPER-->
+    </body>
+</html>
