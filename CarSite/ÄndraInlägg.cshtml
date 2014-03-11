@@ -1,0 +1,37 @@
+﻿@{
+    var id=Request["ID"];
+    var SQLSELECT = "SELECT * FROM posts where ID=@0";
+    var db = Database.Open("Inlägg");
+    var Forum = db.QuerySingle(SQLSELECT,id);
+    var Inlägg_Namn=Forum.Namn;
+    var Inlägg_Title=Forum.Title;
+    var Inlägg_Plats=Forum.Plats;
+    var Inlägg_Text=Forum.Text;
+    if(IsPost)
+    {
+        Inlägg_Namn=Request["formNamn"];
+        Inlägg_Title=Request["formTitle"];
+        Inlägg_Plats=Request["formPlats"];
+        Inlägg_Text=Request["formText"];
+        var SQLUPDATE = "UPDATE posts Set Namn=@0, Title=@1, Plats=@2, Text=@3 WHERE id=@4";
+        db.Execute(SQLUPDATE, Inlägg_Namn, Inlägg_Title, Inlägg_Plats, Inlägg_Text, id);
+        Response.Redirect("~/Meny/Forum.cshtml");
+    }
+}
+
+<h2>Ändra Inlägg.</h2>
+<form action="" method="post">
+    <p>Användare:<br/><input type="text" name="formNamn" value="@Inlägg_Namn"/></p>
+    <p>Title<br/><input type="text" name="formTitle" value="@Inlägg_Title"/></p>
+    <p>Kategori:<br/><select name="formKategori">
+            <option value="A">Billjud</option>
+            <option value="B">Elektronik</option>
+            <option value="C">Motor och tuning</option>
+            <option value="D">Styling</option>
+            <option value="E">Skötsel</option>
+            <option value="F">Tips & Råd</option>
+        </select> </p>
+    <p>Plats:<br/><input type="text" name="formPlats" value="@Inlägg_Plats"/></p>
+    <p>Text:<br/><input type="text" name="formText" value="@Inlägg_Text"/></p>
+    <p><input type="submit" value="Ändra Inlägg"/></p>
+</form>

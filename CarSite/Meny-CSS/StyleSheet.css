@@ -1,0 +1,63 @@
+body {
+    background-image: url("http://www.highresolutionswallpaper.com/file/909/stancenation-350z-1680x1050.jpg");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center; 
+    background-size:cover;
+    padding-bottom: 90px;
+    margin:0px;
+    padding:0px;
+    
+}
+.PageWrapper {
+    border:solid 1px;
+    border-radius:5px;
+    width:70%;
+    min-height:800px;
+    background-color: rgba(142, 142, 142, 0.9);
+    position:relative;
+    margin:0px auto;
+    margin-bottom:50px;
+    margin-top:180px;
+    
+}
+.container {
+    border:1px solid black;
+    width: 160%;
+    position: absolute;
+    left: -30%;
+
+}
+    .container:nth-child(1) {
+        margin:0 auto;
+        position:absolute;
+        /*width: 100%;*/
+        top: -43px;
+        
+    }
+.container ul {
+    padding:0;
+    margin: 0;
+    list-style: none;
+    width:100%;
+    text-align:center;
+    background-color:rgb(49, 87, 122)
+}
+.container ul li {
+    display: inline-block;
+    width: 130px;    
+    background-color: rgb(49, 87, 122);    
+    padding:10px;
+    
+}
+.container ul li a {
+    text-decoration:none;
+    color:rgb(0, 0, 0);
+    font-family: 'Candal', sans-serif; font-weight: 900; 
+    color:white;
+    }
+
+
+
+
+    
