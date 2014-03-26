@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@Page.Title - My ASP.NET Web Page</title>
+        <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src="~/Scripts/jquery-2.1.0.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.8.20.js"></script>
+        <script src="~/Scripts/modernizr-2.5.3.js"></script>
+        <meta name="viewport" content="width=device-width" />
+        <script src="~/DaskbarLink/DaskBarJS.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Domine:400,700|Ubuntu:400,700|Tienne:400,700|Alegreya+Sans:400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">           
+                <div class="float-right">
+                    <section id="login">
+                        @if (WebSecurity.IsAuthenticated) {
+                            <text>
+                        
+                               
+                                <form id="logoutForm" action="~/Account/Logout" method="post">
+                                    @AntiForgery.GetHtml()
+                                    <ul>
+                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+                                        <li><a href="">Intällningar</a></li> 
+                                    </ul>
+                                </form>
+                                <div id="inlogg_kassa">
+                                    <ul id="betalning">
+                                        <li class="kund"><a href="">Kassa</a></li>
+                                        <li class="kund"><a href="">Kundkorg</a></li>
+                                    </ul>
+                                </div>
+                            
+                            </text>
+                        } else {
+                            <ul>
+                                <li><a href="~/Account/Register">Register</a></li>
+                                <li><a href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        }
+                        
+                    </section>
+                </div>
+            </div>
+
+            <div id="meny_new">
+                <div class="center">
+                <ul>
+                    <li><a href="~/Default.cshtml">HEM</a></li>
+                    <li><a href="">VILLKOR & GARANTI</a></li>
+                    <li><a href="">KUNDSERVICE</a></li>
+                    <li><a href="">VANLIGA FRÅGOR</a></li>
+                    <li><a href="">KONTAKTA OSS</a></li>
+                </ul>
+               </div>
+            </div>
+        </header>
+        <div class="social-float-parent">
+            <div id="social-float">
+                    <ul>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+                        <li><a href="">HEJ</a></li>
+
+                    </ul>
+                </div>
+        </div>
+        <div id="footer">
+</div>
+       
+            
+        @RenderBody()
+            
+        
+
+
+
+
+
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

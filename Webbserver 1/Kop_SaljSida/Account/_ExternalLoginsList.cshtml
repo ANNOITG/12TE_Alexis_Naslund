@@ -1,0 +1,15 @@
+﻿@if (OAuthWebSecurity.RegisteredClientData.Count == 0) {
+} else {
+    <form method="post">
+    @AntiForgery.GetHtml()
+    <fieldset id="socialLoginList">
+        <legend>Log in using another service</legend>
+        <p>
+            @foreach (var client in OAuthWebSecurity.RegisteredClientData) {
+                <button type="submit" name="provider" value="@client.AuthenticationClient.ProviderName"
+                        title="Log in using your @client.DisplayName account">@client.DisplayName</button>
+            }
+        </p>
+    </fieldset>
+    </form>
+}

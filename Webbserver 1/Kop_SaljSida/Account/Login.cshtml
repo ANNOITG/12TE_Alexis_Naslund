@@ -1,0 +1,110 @@
+﻿@* Remove this section if you are using bundling *@
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Log in";
+
+    // Initialize general page variables
+    var email = "";
+    var password = "";
+    var rememberMe = false;
+
+    var returnUrl = Request.QueryString["ReturnUrl"];
+    if (returnUrl.IsEmpty()) {
+        // Some external login providers always require a return URL value
+        returnUrl = Href("~/");
+    }
+
+    // Setup validation
+    Validation.RequireField("email", "You must specify an email address.");
+    Validation.RequireField("password", "You must specify a password.");
+    Validation.Add("password",
+        Validator.StringLength(
+            maxLength: Int32.MaxValue,
+            minLength: 6,
+            errorMessage: "Password must be at least 6 characters"));
+
+    // If this is a POST request, validate and process data
+    if (IsPost) {
+        AntiForgery.Validate();
+        // is this an external login request?
+        string provider = Request.Form["provider"];
+        if (!provider.IsEmpty()) {
+            OAuthWebSecurity.RequestAuthentication(provider, Href("~/Account/RegisterService", new { returnUrl }));
+            return;
+        } else if (Validation.IsValid()) {
+            email = Request.Form["email"];
+            password = Request.Form["password"];
+            rememberMe = Request.Form["rememberMe"].AsBool();
+
+            if (WebSecurity.UserExists(email) && WebSecurity.GetPasswordFailuresSinceLastSuccess(email) > 4 && WebSecurity.GetLastPasswordFailureDate(email).AddSeconds(60) > DateTime.UtcNow) {
+                Response.Redirect("~/Account/AccountLockedOut");
+                return;
+            }
+
+            // Attempt to log in using provided credentials
+            if (WebSecurity.Login(email, password, rememberMe)) {
+                Context.RedirectLocal(returnUrl);
+                return;
+            } else {
+                ModelState.AddFormError("Du skrev fel lösenord.");
+            }
+        }
+    }
+}
+
+<hgroup class="title">
+    
+</hgroup>
+
+<section id="loginForm">
+    
+    <form method="post">
+        @AntiForgery.GetHtml()
+        @* If one or more validation errors exist, show an error *@
+        @Html.ValidationSummary("Log in was unsuccessful. Please correct the errors and try again.", excludeFieldErrors: true, htmlAttributes: null)
+
+        <fieldset>
+            <legend>Log in to Your Account</legend>
+            <ol id="login_border">
+                <li class="email">
+                    <label for="email" @if (!ModelState.IsValidField("email"))
+                                       {<text>class="error-label"</text>}>Din Email</label>
+                    <input type="text" id="email" name="email" value="@email" @Validation.For("email")/>
+                    @* Write any user name validation errors to the page *@
+                    @Html.ValidationMessage("email")
+                </li>
+                <li class="password">
+                    <label for="password" @if (!ModelState.IsValidField("password")) {<text>class="error-label"</text>}>Lösenord</label>
+                    <input type="password" id="password" name="password" @Validation.For("password")/>
+                    @* Write any password validation errors to the page *@
+                    @Html.ValidationMessage("password")
+                </li>
+                <li class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" value="true" checked="@rememberMe" />
+                    <label class="checkbox" for="rememberMe">Remember me?</label>
+                </li>
+                <li>
+                    <input type="submit" value="Log in" />
+                </li>
+            </ol>
+        <div class="div_login_buttom">
+                <ol class="login_buttom">
+                    <li>
+                        <input type="button" value="Forgot Password" ONCLICK="window.location.href='ForgotPassword.cshtml'" />
+                    </li>
+                </ol>
+        </div>
+            
+        </fieldset>
+    </form>
+    
+</section>
+
+
+    @RenderPage("~/Account/_ExternalLoginsList.cshtml")
+
